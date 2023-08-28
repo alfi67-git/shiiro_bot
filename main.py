@@ -25,8 +25,16 @@ async def on_message(message):
 #######################################################
 bot = commands.Bot(command_prefix='$', intents=intents)
 
-@bot.event
-async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="Coding myself"))
+@client.event
+async def on_message(message):
+    if message.content.startswith('$embed'):
+        embedVar = discord.Embed(title='Hello', description='Desc', color=0x00ff00)
+        embedVar.add_field(name='Field1', value='hi', inline=False)
+        embedVar.add_field(name='Field2', value='hi2', inline=False)
+        await message.channel.send(embed=embedVar)
+
+# @client.event
+# async def on_message(message):
+#     if message.content.startswith('$invite'):
 
 client.run('ODAzNTM3MDE0NTYwNzg0Mzk0.GXM_FL.Gs4oIY-eRqfYandv90tWWNdTYVzPX3Ax5TELRI')
